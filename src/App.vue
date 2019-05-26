@@ -1,29 +1,22 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <div class="page-app">
     <router-view/>
+    <van-tabbar route v-model="activeTab" active-color="#07c160" inactive-color="#000">
+      <van-tabbar-item name="home" replace to="/" icon="home-o">首页</van-tabbar-item>
+      <van-tabbar-item name="about" replace to="/about" icon="home-o">关于</van-tabbar-item>
+      <van-tabbar-item name="test" replace to="/test" icon="home-o">测试</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+export default {
+  data() {
+    return {
+      activeTab: 0,
+    };
+  },
+  created() {
   }
-}
-</style>
+};
+</script>
+
