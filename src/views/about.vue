@@ -7,18 +7,17 @@
 export default {
   name: 'about',
   data() {
-    return {
-    };
+    return {}
   },
   created() {
-    this.init();
+    this.init()
   },
   methods: {
     init() {
-      console.log('init: about');
+      console.log('init: about')
     }
   }
-};
+}
 </script>
 <style lang="scss">
 .page-about {
