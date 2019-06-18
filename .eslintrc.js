@@ -20,6 +20,19 @@ module.exports = {
             flatTernaryExpressions: true
         }
     ],
+    'vue/script-indent': [
+      'error',
+      2,
+      {
+        switchCase: 1
+      }
+    ],
+    'vue/html-indent': ['error', 2],
+    'vue/html-closing-bracket-newline': 'off',
+    'vue/html-closing-bracket-spacing': 'off',
+    'vue/attributes-order': 'off',
+    'vue/v-on-function-call': 'off',
+    'semi': 'off',
     'no-empty-function': 0
   }
 };
