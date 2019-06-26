@@ -1,11 +1,12 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import login from './views/login.vue';
-import home from './views/home.vue';
-import about from './views/about.vue';
-import test from './views/test.vue';
+import Vue from 'vue'
+import Router from 'vue-router'
+import login from './views/login.vue'
+import home from './views/home.vue'
+import about from './views/about.vue'
+import test from './views/test.vue'
+import detail from './views/detail.vue'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   routes: [
@@ -20,11 +21,15 @@ export default new Router({
     }, {
       path: '/about',
       name: 'about',
-      component: about,
+      component: about
+    }, {
+      path: '/detail',
+      name: 'detail',
+      component: detail,
     }, {
       path: '/test',
       name: 'test',
       component: test,
     }
   ],
-});
+})
