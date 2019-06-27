@@ -1,6 +1,6 @@
 <template>
   <div class="page-about">
-    <img src="../assets/banner.jpg" alt="" class="banner">
+    <img src="../../assets/banner.jpg" alt="" class="banner">
     <van-cell-group>
       <van-cell @click="toDetail" title="问：旧楼加装电梯的相关政策文件有哪些？" is-link/>
       <van-cell @click="toDetail" title="问：申请旧楼加装电梯规划许可的提出方式是什么？ " is-link/>
@@ -21,7 +21,6 @@
 </template>
 <script>
 export default {
-  name: 'about',
   data() {
     return {}
   },
@@ -29,12 +28,12 @@ export default {
   },
   methods: {
     toDetail() {
-      this.$router.push('/detail')
+      this.$router.push('/about/detail')
     }
   }
 }
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .page-about {
   .banner {
     width: 100%;

@@ -1,29 +1,48 @@
 <template>
-  <div class="page-app">
-    <router-view/>
-    <van-tabbar route v-model="activeTab" v-if="showTabBar">
-      <van-tabbar-item name="home" replace to="/" icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item name="about" replace to="/about" icon="comment-o">常见问题</van-tabbar-item>
-      <van-tabbar-item name="test" replace to="/test" icon="phone-o">立即预约</van-tabbar-item>
-    </van-tabbar>
-  </div>
+  <transition :name="transitionName">
+    <keep-alive>
+      <router-view v-if="keepAlive" class="child-view"></router-view>
+    </keep-alive>
+    <router-view v-if="!keepAlive" class="child-view"></router-view>
+  </transition>
 </template>
 <script>
 export default {
   data() {
     return {
-      activeTab: 0,
-      showTabBar: true
+      keepAlive: true, // 是否缓存页面，默认true
+      transitionName: 'slide-left' // 动画名称
     }
   },
   watch: {
     '$route'(to, from) {
-      const name = to.name
-      this.showTabBar = name === 'home' || name === 'about' || name === 'test'
+      this.keepAlive = !(this.$route.meta.keepAlive === false)
+      // 根据路由切换，改变动画
+      const toDepth = to.path.split('/').length
+      const fromDepth = from.path.split('/').length
+      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
     }
   },
   created() {
-  }
+  },
+  methods: {}
 }
 </script>
+<style scoped lang="scss">
+.child-view {
+  position: absolute;
+  width: 100%;
+  transition: all .5s cubic-bezier(.55, 0, .1, 1);
+}
+.slide-left-enter, .slide-right-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(50px, 0);
+  transform: translate(50px, 0);
+}
+.slide-left-leave-active, .slide-right-enter {
+  opacity: 0;
+  -webkit-transform: translate(-50px, 0);
+  transform: translate(-50px, 0);
+}
+</style>
 

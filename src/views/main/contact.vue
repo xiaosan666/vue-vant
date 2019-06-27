@@ -1,6 +1,6 @@
 <template>
-  <div class="page-test">
-    <img src="../assets/banner.jpg" alt="" class="banner">
+  <div class="page-contact">
+    <img src="../../assets/banner.jpg" alt="" class="banner">
     <h2 class="class-title">现在预约</h2>
     <div class="class-hr"></div>
     <div class="tip">现对有意向加装电梯的小区进行预约征集</div>
@@ -36,7 +36,7 @@
         />
       </van-cell-group>
       <div class="submit">
-        <van-button block round type="primary" @click="test">立即预约</van-button>
+        <van-button block round type="primary" @click="appointment">立即预约</van-button>
       </div>
     </div>
   </div>
@@ -45,14 +45,13 @@
 import { Dialog } from 'vant'
 
 export default {
-  name: 'about',
   data() {
     return {}
   },
   created() {
   },
   methods: {
-    test() {
+    appointment() {
       Dialog.alert({
         title: '标题',
         message: '开发中...'
@@ -63,8 +62,8 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.page-test {
+<style scoped lang="scss">
+.page-contact {
   .banner {
     width: 100%;
   }

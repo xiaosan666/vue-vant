@@ -1,6 +1,6 @@
 <template>
   <div class="page-home">
-    <img src="../assets/banner.jpg" alt="" class="banner">
+    <img src="../../assets/banner.jpg" alt="" class="banner">
     <div class="business">
       <h2 class="class-title">主营业务</h2>
       <div class="class-hr"></div>
@@ -77,7 +77,7 @@
            alt="">
       <div class="detail">
         <van-row>
-          <van-col span="6" class="img-warp"><img src="../assets/code.png" alt=""></van-col>
+          <van-col span="6" class="img-warp"><img src="../../assets/code.png" alt=""></van-col>
           <van-col span="18" class="detail">
             <div>电话：0771-5331166</div>
             <div>邮箱：yanxiaojun617@163.com</div>
@@ -94,17 +94,15 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios/index'
 
 export default {
-  name: 'home',
   created() {
-    this.init()
+  },
+  activated() {
+    console.log('home-activated')
   },
   methods: {
-    init() {
-      console.log('home init')
-    },
     href(url) {
       console.log(url)
       window.location.href = url
@@ -122,7 +120,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .page-home {
   color: #333;
   .banner {
@@ -188,7 +186,6 @@ export default {
     }
   }
   .contact {
-    margin-bottom: 50px;
     .map {
       width: 100%
     }

@@ -33,6 +33,7 @@ module.exports = {
     'vue/attributes-order': 'off',
     'vue/v-on-function-call': 'off',
     'semi': 'off',
+    'object-curly-spacing': 'off',
     'no-empty-function': 0
   }
 };

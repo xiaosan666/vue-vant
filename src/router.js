@@ -1,35 +1,34 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import login from './views/login.vue'
-import home from './views/home.vue'
-import about from './views/about.vue'
-import test from './views/test.vue'
-import detail from './views/detail.vue'
+import main from './views/main/index'
+import login from './views/core/login.vue'
+import pageNotFound from './views/core/404.vue'
+import aboutDetail from './views/about/detail.vue'
 
 Vue.use(Router)
-
 export default new Router({
+  mode: 'history',
   routes: [
     {
+      path: '/',
+      name: 'main',
+      component: main,
+    }, {
       path: '/login',
       name: 'login',
       component: login,
     }, {
-      path: '/',
-      name: 'home',
-      component: home,
+      path: '/about/detail',
+      name: 'aboutDetail',
+      component: aboutDetail
     }, {
-      path: '/about',
-      name: 'about',
-      component: about
-    }, {
-      path: '/detail',
-      name: 'detail',
-      component: detail,
-    }, {
-      path: '/test',
-      name: 'test',
-      component: test,
+      path: '*',
+      name: 'pageNotFound',
+      component: pageNotFound,
     }
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // https://router.vuejs.org/zh/guide/advanced/scroll-behavior.html#%E5%BC%82%E6%AD%A5%E6%BB%9A%E5%8A%A8
+    return savedPosition || {x: 0, y: 0}
+  }
 })
