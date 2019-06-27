@@ -7,7 +7,6 @@
 <script>
 
 export default {
-  name: 'login',
   methods: {
     login() {
       alert(10);
