@@ -37,12 +37,14 @@
       </van-cell-group>
       <div class="submit">
         <van-button block round type="primary" @click="appointment">立即预约</van-button>
+        <van-button block round type="primary" @click="test">test</van-button>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { Dialog } from 'vant'
+import http from '@/providers/http'
+import helper from '@/providers/helper'
 
 export default {
   data() {
@@ -52,12 +54,22 @@ export default {
   },
   methods: {
     appointment() {
-      Dialog.alert({
-        title: '标题',
-        message: '开发中...'
-      }).then(() => {
-        // on close
+      helper.alert('开发中...')
+    },
+    test() {
+      helper.showLoading()
+      http.request('/v1/login', {
+        'client_id': 'app',
+        'username': 'yxj',
+        'password': 'e10adc3949ba59abbe56e057f20f883e'
+      }).then(function(response) {
+        helper.hideLoading()
+        console.log(response)
+      }).catch(function(error) {
+        helper.hideLoading()
+        console.log(error)
       })
+
     }
   }
 }

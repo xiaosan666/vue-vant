@@ -94,8 +94,6 @@
 </template>
 
 <script>
-import axios from 'axios/index'
-
 export default {
   created() {
   },
@@ -106,16 +104,6 @@ export default {
     href(url) {
       console.log(url)
       window.location.href = url
-    },
-    test() {
-      axios.get('https://www.yanxiaojun617.com/invoice/api/')
-        .then(function(response) {
-          console.log(response)
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
-
     }
   }
 }
