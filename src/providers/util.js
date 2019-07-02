@@ -5,33 +5,33 @@
 
 const sessionStorage = {
   set(key, value) {
-    sessionStorage.setItem(key, JSON.stringify(value))
+    window.sessionStorage.setItem(key, JSON.stringify(value))
   },
   get(key) {
-    const jsonString = sessionStorage.getItem(key)
+    const jsonString = window.sessionStorage.getItem(key)
     return jsonString ? JSON.parse(jsonString) : null
   },
   remove(key) {
-    sessionStorage.removeItem(key)
+    window.sessionStorage.removeItem(key)
   },
   clear() {
-    sessionStorage.clear()
+    window.sessionStorage.clear()
   }
 }
 
 const localStorage = {
   set(key, value) {
-    localStorage.setItem(key, JSON.stringify(value))
+    window.localStorage.setItem(key, JSON.stringify(value))
   },
   get(key) {
-    const jsonString = localStorage.getItem(key)
+    const jsonString = window.localStorage.getItem(key)
     return jsonString ? JSON.parse(jsonString) : null
   },
   remove(key) {
-    localStorage.removeItem(key)
+    window.localStorage.removeItem(key)
   },
   clear() {
-    localStorage.clear()
+    window.localStorage.clear()
   }
 }
 
@@ -64,21 +64,21 @@ const formatDate = (date, sFormat = 'yyyy-MM-dd') => {
     TSecond: '0',
     Millisecond: 0
   }
-  time.Year = date.getFullYear()
+  time.Year = date.getItemFullYear()
   time.TYear = String(time.Year).substr(2)
-  time.Month = date.getMonth() + 1
+  time.Month = date.getItemMonth() + 1
   time.TMonth = time.Month < 10 ? '0' + time.Month : String(time.Month)
-  time.Day = date.getDate()
+  time.Day = date.getItemDate()
   time.TDay = time.Day < 10 ? '0' + time.Day : String(time.Day)
-  time.Hour = date.getHours()
+  time.Hour = date.getItemHours()
   time.THour = time.Hour < 10 ? '0' + time.Hour : String(time.Hour)
   time.hour = time.Hour < 13 ? time.Hour : time.Hour - 12
   time.Thour = time.hour < 10 ? '0' + time.hour : String(time.hour)
-  time.Minute = date.getMinutes()
+  time.Minute = date.getItemMinutes()
   time.TMinute = time.Minute < 10 ? '0' + time.Minute : String(time.Minute)
-  time.Second = date.getSeconds()
+  time.Second = date.getItemSeconds()
   time.TSecond = time.Second < 10 ? '0' + time.Second : String(time.Second)
-  time.Millisecond = date.getMilliseconds()
+  time.Millisecond = date.getItemMilliseconds()
 
   return sFormat.replace(/yyyy/ig, String(time.Year))
     .replace(/yyy/ig, String(time.Year))

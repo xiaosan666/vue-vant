@@ -45,6 +45,7 @@
 <script>
 import http from '@/providers/http'
 import helper from '@/providers/helper'
+import globalData from '@/providers/globalData'
 
 export default {
   data() {
@@ -57,19 +58,19 @@ export default {
       helper.alert('开发中...')
     },
     test() {
-      helper.showLoading()
-      http.request('/v1/login', {
+      http.post('/v1/login', {
         'client_id': 'app',
         'username': 'yxj',
         'password': 'e10adc3949ba59abbe56e057f20f883e'
-      }).then(function(response) {
-        helper.hideLoading()
+      }, {showLoading: true, cacheData: true}).then(function(response) {
         console.log(response)
+        globalData.token = 111
       }).catch(function(error) {
-        helper.hideLoading()
         console.log(error)
       })
-
+      // http.get('/').then(res => {
+      //   console.log(res)
+      // })
     }
   }
 }
